@@ -13,7 +13,7 @@ yum install stress-ng -y
 #Create a bash script with the stress-ng commands
 
 touch /usr/local/etc/get_stress-ng0.sh
-sed 'stress-ng --cpu 1 --vm 4 --hdd 1 --fork 8 --switch 4 --timeout 5m --metrics-brief' /usr/local/etc/get_stress-ng0.sh
+echo "stress-ng --cpu 1 --vm 4 --hdd 1 --fork 8 --switch 4 --timeout 5m --metrics-brief" >> /usr/local/etc/get_stress-ng0.sh
   
 #Give permission to the script
 chmod u+x /usr/local/etc/get_stress-ng0.sh
