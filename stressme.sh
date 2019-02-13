@@ -19,6 +19,6 @@ echo "stress-ng --cpu 1 --vm 4 --hdd 1 --fork 8 --switch 4 --timeout 5m --metric
 chmod u+x /usr/local/etc/get_stress-ng0.sh
 
 #Add to the Crontab
-crontab -l | { cat; echo "0 0 0 0 0 /usr/local/etc/get_stress-ng0.sh"; } | crontab -
+crontab -l | { cat; echo "/11 * * * * sleep ${RANDOM:0:2}m ; /usr/local/etc/get_stress-ng0.sh"; } | crontab -
 
 # add jobs at please on intervals (you can check examples here https://crontab.guru/examples.html)
