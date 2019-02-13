@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # Preconditions: CentOS host to be used
 
 # Download epel repository 
@@ -10,13 +11,14 @@ rpm -Uvh epel-release*rpm
 yum install stress-ng -y
 
 #Create a bash script with the stress-ng commands
-vim /usr/local/etc/get_stress-ng0.sh
-  #! /bin/bash
-  #stress-ng --cpu 1 --vm 4 --hdd 1 --fork 8 --switch 4 --timeout 5m --metrics-brief
+
+touch /usr/local/etc/get_stress-ng0.sh
+sed 'stress-ng --cpu 1 --vm 4 --hdd 1 --fork 8 --switch 4 --timeout 5m --metrics-brief' /usr/local/etc/get_stress-ng0.sh
   
 #Give permission to the script
 chmod u+x /usr/local/etc/get_stress-ng0.sh
 
 #Add to the Crontab
-crontab -e
+crontab -l | { cat; echo "0 0 0 0 0 /usr/local/etc/get_stress-ng0.sh"; } | crontab -
+
 # add jobs at please on intervals (you can check examples here https://crontab.guru/examples.html)
